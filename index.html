@@ -1,0 +1,1034 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Sudip Adhikari — EEE Engineer</title>
+<meta name="description" content="Sudip Adhikari — Electrical and Electronics Engineering student at Nepal Engineering College. Power electronics, motor control, VFD design, industrial automation."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=JetBrains+Mono:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<style>
+  :root{
+    --bg:#0A1A13;
+    --bg-soft:#0D2118;
+    --panel:#11281D;
+    --panel-2:#163322;
+    --line:rgba(236,234,224,0.10);
+    --line-strong:rgba(236,234,224,0.18);
+    --copper:#D5824A;
+    --copper-bright:#EFA468;
+    --signal:#5FD9C0;
+    --signal-dim:rgba(95,217,192,0.35);
+    --silk:#ECEAE0;
+    --silk-dim:#9FB3A4;
+    --silk-faint:#6E8478;
+    --radius:3px;
+    --maxw:1180px;
+    --display:'Space Grotesk',sans-serif;
+    --body:'IBM Plex Sans',sans-serif;
+    --mono:'JetBrains Mono',monospace;
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg);
+    color:var(--silk);
+    font-family:var(--body);
+    line-height:1.6;
+    overflow-x:hidden;
+    background-image:
+      linear-gradient(var(--line) 1px, transparent 1px),
+      linear-gradient(90deg, var(--line) 1px, transparent 1px);
+    background-size:42px 42px;
+    background-position:center top;
+    position:relative;
+  }
+  @media(prefers-reduced-motion:reduce){*{animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important;scroll-behavior:auto!important;}}
+
+  a{color:inherit;text-decoration:none;}
+  ul{list-style:none;}
+  img,svg{display:block;}
+  .icon{width:18px;height:18px;flex-shrink:0;}
+  ::selection{background:var(--copper);color:#0A1A13;}
+
+  /* ── progress bar ── */
+  #prog{position:fixed;top:0;left:0;height:3px;background:linear-gradient(90deg,var(--signal),var(--copper));z-index:300;transition:width .1s;pointer-events:none;width:0;box-shadow:0 0 12px rgba(95,217,192,.45);}
+
+  /* ── layout ── */
+  .section-inner{max-width:var(--maxw);margin:0 auto;padding:0 32px;}
+  .section{position:relative;padding:108px 0;}
+  .section+.section{border-top:1px solid var(--line);}
+
+  .designator{
+    display:inline-flex;align-items:center;gap:10px;
+    font-family:var(--mono);font-size:0.74rem;letter-spacing:0.16em;
+    color:var(--copper);text-transform:uppercase;margin-bottom:18px;
+  }
+  .designator::before{content:"";width:7px;height:7px;border-radius:50%;background:var(--signal);box-shadow:0 0 8px 1px var(--signal-dim);}
+
+  .heading{font-family:var(--display);font-weight:600;font-size:clamp(1.8rem,3.4vw,2.6rem);letter-spacing:-0.01em;color:var(--silk);margin-bottom:44px;max-width:680px;}
+  .heading .accent{color:var(--copper);}
+
+  /* ── buttons ── */
+  .btn{display:inline-flex;align-items:center;gap:9px;font-family:var(--mono);font-size:0.82rem;font-weight:500;letter-spacing:0.02em;padding:13px 22px;border-radius:var(--radius);border:1px solid transparent;cursor:pointer;transition:all .2s ease;white-space:nowrap;text-decoration:none;}
+  .btn svg{width:15px;height:15px;}
+  .btn-primary{background:var(--copper);color:#0A1A13;}
+  .btn-primary:hover{background:var(--copper-bright);transform:translateY(-1px);}
+  .btn-ghost{border-color:var(--line-strong);color:var(--silk);background:transparent;}
+  .btn-ghost:hover{border-color:var(--signal);color:var(--signal);}
+
+  /* ── nav ── */
+  .nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:18px 32px;background:rgba(10,26,19,0.78);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);transition:background .3s ease;}
+  .nav-logo{font-family:var(--mono);font-size:1rem;font-weight:600;color:var(--silk);letter-spacing:0.02em;}
+  .nav-logo .b{color:var(--copper);}
+  .nav-links{display:flex;gap:34px;}
+  .nav-links a{font-family:var(--mono);font-size:0.78rem;color:var(--silk-dim);letter-spacing:0.04em;transition:color .2s;}
+  .nav-links a:hover{color:var(--signal);}
+  .nav-right{display:flex;align-items:center;gap:14px;}
+  .nav-icon{width:34px;height:34px;border:1px solid var(--line-strong);border-radius:var(--radius);display:flex;align-items:center;justify-content:center;color:var(--silk-dim);transition:all .2s;}
+  .nav-icon:hover{color:var(--signal);border-color:var(--signal);}
+  .nav-icon svg{width:16px;height:16px;}
+  .hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:6px;}
+  .hamburger span{width:22px;height:2px;background:var(--silk);}
+
+  /* ── hero ── */
+  .hero{min-height:100vh;display:flex;align-items:center;padding:140px 32px 90px;max-width:var(--maxw);margin:0 auto;gap:60px;}
+  .hero-left{flex:1.1;}
+  .hero-right{flex:0.9;display:flex;justify-content:center;}
+
+  .hero-eyebrow{display:inline-flex;align-items:center;gap:10px;font-family:var(--mono);font-size:0.78rem;color:var(--signal);border:1px solid var(--line-strong);padding:7px 14px;border-radius:20px;margin-bottom:28px;}
+  .dot-live{width:7px;height:7px;border-radius:50%;background:var(--signal);position:relative;}
+  .dot-live::after{content:"";position:absolute;inset:-4px;border-radius:50%;border:1px solid var(--signal);animation:pulse 2s ease-out infinite;}
+  @keyframes pulse{0%{transform:scale(.6);opacity:1;}100%{transform:scale(2.1);opacity:0;}}
+
+  .hero-name{font-family:var(--display);font-weight:700;font-size:clamp(2.6rem,5.4vw,4.1rem);line-height:1.04;letter-spacing:-0.02em;color:var(--silk);margin-bottom:20px;}
+  .hero-name span{display:block;}
+  .hero-name .last{color:var(--copper);}
+
+  .hero-role-line{font-family:var(--mono);font-size:0.95rem;color:var(--silk-dim);margin-bottom:26px;display:flex;flex-wrap:wrap;gap:8px;align-items:center;}
+  .hero-role-line .sep{color:var(--line-strong);}
+
+  .hero-bio{color:var(--silk-dim);font-size:1rem;max-width:520px;margin-bottom:34px;}
+  .hero-bio strong{color:var(--silk);font-weight:500;}
+  .hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:50px;}
+
+  .hero-typewriter-wrap{font-family:var(--mono);font-size:0.88rem;color:var(--silk-dim);margin-bottom:24px;display:flex;align-items:center;gap:8px;}
+  .tw-static{color:var(--silk-faint);}
+  .tw-text{color:var(--signal);}
+  .tw-cursor{display:inline-block;width:7px;height:14px;background:var(--signal);vertical-align:middle;animation:blink 1s step-end infinite;margin-left:2px;}
+  @keyframes blink{50%{opacity:0;}}
+
+  .hero-stats{display:flex;gap:0;border-top:1px solid var(--line);max-width:520px;}
+  .stat{flex:1;padding:18px 18px 0 0;}
+  .stat-num{display:block;font-family:var(--display);font-weight:600;font-size:1.7rem;color:var(--copper);}
+  .stat-label{display:block;font-family:var(--mono);font-size:0.68rem;color:var(--silk-faint);letter-spacing:0.04em;margin-top:4px;text-transform:uppercase;}
+
+  /* ── scope panel (hero visual) ── */
+  .scope-panel{border:1px solid var(--line-strong);border-radius:6px;background:var(--panel);width:100%;max-width:420px;position:relative;}
+  .scope-panel::before,.scope-panel::after,.scope-corner-b1,.scope-corner-b2{content:"";position:absolute;width:14px;height:14px;border:1.5px solid var(--copper);}
+  .scope-panel::before{top:-1px;left:-1px;border-right:none;border-bottom:none;}
+  .scope-panel::after{top:-1px;right:-1px;border-left:none;border-bottom:none;}
+  .scope-corners{position:relative;}
+  .scope-corner-b1{bottom:-1px;left:-1px;border-right:none;border-top:none;}
+  .scope-corner-b2{bottom:-1px;right:-1px;border-left:none;border-top:none;}
+
+  .scope-head{display:flex;align-items:center;justify-content:space-between;padding:12px 16px;border-bottom:1px solid var(--line);font-family:var(--mono);font-size:0.68rem;color:var(--silk-faint);letter-spacing:0.05em;}
+  .scope-head .dots{display:flex;gap:6px;}
+  .scope-head .dots span{width:7px;height:7px;border-radius:50%;background:var(--line-strong);}
+
+  /* waveform viz */
+  .wave-wrap{padding:20px 16px 6px;position:relative;min-height:136px;overflow:hidden;}
+  .wave-canvas{width:100%;height:80px;display:block;}
+  .wave-caption{font-family:var(--mono);font-size:0.66rem;color:var(--silk-faint);display:flex;justify-content:space-between;margin:6px 0 14px;letter-spacing:0.02em;}
+  .wave-caption strong{color:var(--signal);font-weight:400;}
+
+  .code-window{border-top:1px solid var(--line);}
+  .code-window pre{font-family:var(--mono);font-size:0.74rem;line-height:1.65;color:var(--silk-dim);padding:16px;min-height:170px;white-space:pre-wrap;}
+  .tok-kw{color:var(--copper);}
+  .tok-str{color:var(--signal);}
+  .tok-com{color:var(--silk-faint);}
+  .cursor-blink{display:inline-block;width:7px;height:14px;background:var(--signal);vertical-align:middle;animation:blink 1s step-end infinite;}
+
+  /* ── reveal ── */
+  .reveal{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease;}
+  .reveal.in{opacity:1;transform:translateY(0);}
+  .reveal.d1{transition-delay:.08s;}
+  .reveal.d2{transition-delay:.16s;}
+  .reveal.d3{transition-delay:.24s;}
+
+  /* ── highlights ── */
+  .hl-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);}
+  .hl-card{background:var(--bg-soft);padding:26px 22px;position:relative;transition:background .2s,border-color .25s,box-shadow .25s,transform .25s;}
+  .hl-card:hover,.hl-card.is-active{background:var(--panel);}
+  .hl-icon-wrap{width:36px;height:36px;border:1px solid var(--line-strong);border-radius:var(--radius);display:flex;align-items:center;justify-content:center;color:var(--copper);margin-bottom:16px;}
+  .hl-card p{font-size:0.88rem;color:var(--silk-dim);line-height:1.55;}
+
+  /* ── about ── */
+  .about-grid{display:grid;grid-template-columns:1.3fr 1fr;gap:56px;align-items:start;}
+  .about-text p{color:var(--silk-dim);margin-bottom:16px;font-size:0.97rem;}
+  .about-text strong{color:var(--silk);font-weight:600;}
+  .about-tags{display:flex;flex-wrap:wrap;gap:10px;margin-top:28px;}
+  .tag{font-family:var(--mono);font-size:0.72rem;color:var(--signal);border:1px solid var(--signal-dim);padding:6px 12px;border-radius:20px;letter-spacing:0.02em;}
+
+  .about-card{border:1px solid var(--line-strong);border-radius:6px;background:var(--panel);overflow:hidden;}
+  .profile-block{padding:34px 24px;text-align:center;border-bottom:1px solid var(--line);background:radial-gradient(circle at 50% 0%,rgba(213,130,74,.12),transparent 60%);}
+  .profile-ring{width:84px;height:84px;border-radius:50%;border:1.5px solid var(--copper);display:flex;align-items:center;justify-content:center;margin:0 auto 14px;font-family:var(--display);font-weight:700;font-size:1.5rem;color:var(--copper);}
+  .profile-block .pname{font-family:var(--display);font-weight:600;font-size:1.05rem;color:var(--silk);}
+  .profile-block .prole{font-family:var(--mono);font-size:0.72rem;color:var(--silk-faint);margin-top:4px;}
+  .info-list{padding:6px 0;}
+  .info-row{display:flex;justify-content:space-between;gap:12px;padding:13px 24px;border-bottom:1px solid var(--line);}
+  .info-row:last-child{border-bottom:none;}
+  .info-key{font-family:var(--mono);font-size:0.7rem;color:var(--silk-faint);letter-spacing:0.04em;text-transform:uppercase;padding-top:2px;}
+  .info-val{font-size:0.83rem;color:var(--silk-dim);text-align:right;}
+  .info-val a:hover{color:var(--signal);}
+  .info-val.open{color:var(--signal);}
+
+  /* ── skills ── */
+  .skills-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--line);border:1px solid var(--line);}
+  .skill-cat{background:var(--bg-soft);padding:26px 22px;transition:background .2s,border-color .25s,box-shadow .25s,transform .25s;}
+  .skill-cat:hover,.skill-cat.is-active{background:var(--panel);}
+  .skill-cat-head{display:flex;align-items:center;gap:10px;margin-bottom:18px;}
+  .skill-cat-head .icon-wrap{width:30px;height:30px;border:1px solid var(--line-strong);border-radius:var(--radius);display:flex;align-items:center;justify-content:center;color:var(--signal);}
+  .skill-cat h3{font-family:var(--display);font-weight:600;font-size:0.95rem;color:var(--silk);}
+  .pill-list{display:flex;flex-wrap:wrap;gap:7px;}
+  .pill{font-family:var(--mono);font-size:0.7rem;color:var(--silk-dim);border:1px solid var(--line-strong);padding:5px 10px;border-radius:var(--radius);transition:border-color .2s,color .2s;}
+  .pill:hover{border-color:var(--signal);color:var(--signal);}
+
+  /* ── projects ── */
+  .projects-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;}
+  .proj-card{border:1px solid var(--line-strong);border-radius:6px;background:var(--panel);padding:26px;display:flex;flex-direction:column;gap:14px;position:relative;transition:border-color .25s,transform .25s,box-shadow .25s;}
+  .proj-card:hover{border-color:var(--copper);transform:translateY(-3px);box-shadow:0 8px 32px rgba(213,130,74,.12);}
+  .proj-card.featured{border-color:var(--copper);background:linear-gradient(180deg,var(--panel-2),var(--panel));grid-column:1/-1;}
+  .proj-top{display:flex;justify-content:space-between;align-items:flex-start;}
+  .proj-badge{font-family:var(--mono);font-size:0.64rem;letter-spacing:0.05em;text-transform:uppercase;color:var(--copper);border:1px solid var(--copper);padding:4px 9px;border-radius:20px;}
+  .proj-tp{font-family:var(--mono);font-size:0.7rem;color:var(--silk-faint);}
+  .proj-title{font-family:var(--display);font-weight:600;font-size:1.12rem;color:var(--silk);}
+  .proj-desc{color:var(--silk-dim);font-size:0.87rem;line-height:1.6;}
+  .proj-flow{display:flex;flex-wrap:wrap;align-items:center;gap:8px;font-family:var(--mono);font-size:0.68rem;color:var(--silk-faint);}
+  .proj-flow span{padding:4px 8px;border:1px solid var(--line);border-radius:var(--radius);}
+  .proj-flow .arrow{border:none;padding:0;color:var(--signal);}
+  .proj-stack{display:flex;flex-wrap:wrap;gap:7px;}
+  .proj-stack span{font-family:var(--mono);font-size:0.68rem;color:var(--silk-dim);background:var(--bg-soft);padding:5px 9px;border-radius:var(--radius);}
+
+  /* ── education / timeline ── */
+  .edu-list{display:flex;flex-direction:column;gap:0;}
+  .edu-item{display:grid;grid-template-columns:140px 1fr;gap:24px;padding:28px 0;border-bottom:1px solid var(--line);position:relative;}
+  .edu-item:last-child{border-bottom:none;}
+  .edu-item::before{content:"";position:absolute;left:139px;top:36px;width:8px;height:8px;border-radius:50%;background:var(--copper);border:2px solid var(--bg);}
+  .edu-year{font-family:var(--mono);font-size:0.72rem;color:var(--silk-faint);letter-spacing:0.04em;padding-top:2px;text-align:right;}
+  .edu-title{font-family:var(--display);font-weight:600;font-size:1rem;color:var(--silk);margin-bottom:4px;}
+  .edu-inst{font-family:var(--mono);font-size:0.78rem;color:var(--signal);margin-bottom:6px;}
+  .edu-detail{font-size:0.84rem;color:var(--silk-dim);}
+
+  /* ── experience ── */
+  .exp-card{border:1px solid var(--line-strong);border-radius:6px;background:var(--panel);padding:28px;display:flex;flex-direction:column;gap:12px;}
+  .exp-head{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:12px;}
+  .exp-title{font-family:var(--display);font-weight:600;font-size:1.05rem;color:var(--silk);}
+  .exp-org{font-family:var(--mono);font-size:0.78rem;color:var(--signal);margin-top:4px;}
+  .exp-date{font-family:var(--mono);font-size:0.72rem;color:var(--copper);border:1px solid var(--copper);padding:4px 10px;border-radius:20px;white-space:nowrap;}
+  .exp-bullets{list-style:none;display:flex;flex-direction:column;gap:8px;}
+  .exp-bullets li{font-size:0.87rem;color:var(--silk-dim);padding-left:16px;position:relative;line-height:1.55;}
+  .exp-bullets li::before{content:"";position:absolute;left:0;top:8px;width:5px;height:5px;border-radius:50%;background:var(--signal);}
+
+  /* ── certs ── */
+  .certs-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+  .cert-card{display:flex;align-items:center;gap:14px;border:1px solid var(--line-strong);border-radius:var(--radius);padding:18px 20px;background:var(--panel);transition:border-color .2s,box-shadow .25s,transform .25s;}
+  .cert-card:hover,.cert-card.is-active{border-color:var(--signal);}
+  .cert-card .icon-wrap{width:34px;height:34px;border:1px solid var(--line-strong);border-radius:var(--radius);display:flex;align-items:center;justify-content:center;color:var(--copper);flex-shrink:0;}
+  .cert-card span.label{font-size:0.85rem;color:var(--silk-dim);}
+
+  /* ── cta ── */
+  .cta-section{padding:90px 0;}
+  .cta-card{border:1px solid var(--line-strong);border-radius:8px;padding:64px 48px;text-align:center;background:radial-gradient(circle at 50% 0%,rgba(213,130,74,.10),transparent 65%);position:relative;}
+  .cta-label{font-family:var(--mono);font-size:0.78rem;color:var(--signal);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:16px;}
+  .cta-heading{font-family:var(--display);font-weight:600;font-size:clamp(1.8rem,3.6vw,2.7rem);color:var(--silk);margin-bottom:16px;}
+  .cta-heading .accent{color:var(--copper);}
+  .cta-sub{color:var(--silk-dim);max-width:460px;margin:0 auto 34px;}
+  .cta-actions{display:flex;justify-content:center;flex-wrap:wrap;gap:12px;}
+
+  /* ── contact ── */
+  .contact-grid{display:grid;grid-template-columns:1fr 1.1fr;gap:56px;}
+  .contact-sub{color:var(--silk-dim);max-width:420px;margin-bottom:32px;}
+  .contact-links{display:flex;flex-direction:column;gap:4px;}
+  .contact-item{display:flex;align-items:center;gap:14px;padding:15px 4px;border-bottom:1px solid var(--line);font-size:0.9rem;color:var(--silk-dim);transition:color .2s;}
+  a.contact-item:hover{color:var(--signal);}
+  .contact-item .icon-wrap{width:30px;height:30px;border:1px solid var(--line-strong);border-radius:var(--radius);display:flex;align-items:center;justify-content:center;color:var(--copper);flex-shrink:0;}
+  .form-card{border:1px solid var(--line-strong);border-radius:6px;background:var(--panel);padding:28px;}
+  .form-group{margin-bottom:18px;}
+  .form-group label{display:block;font-family:var(--mono);font-size:0.7rem;color:var(--silk-faint);letter-spacing:0.04em;text-transform:uppercase;margin-bottom:8px;}
+  .form-group input,.form-group textarea{width:100%;background:var(--bg-soft);border:1px solid var(--line-strong);border-radius:var(--radius);padding:11px 13px;color:var(--silk);font-family:var(--body);font-size:0.88rem;resize:vertical;}
+  .form-group input:focus,.form-group textarea:focus{outline:none;border-color:var(--signal);}
+
+  /* ── footer ── */
+  .footer{border-top:1px solid var(--line);padding:36px 0;}
+  .footer-inner{max-width:var(--maxw);margin:0 auto;padding:0 32px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px;}
+  .footer-copy{font-family:var(--mono);font-size:0.74rem;color:var(--silk-faint);}
+  .footer-links{display:flex;gap:22px;}
+  .footer-links a{font-family:var(--mono);font-size:0.74rem;color:var(--silk-dim);transition:color .2s;}
+  .footer-links a:hover{color:var(--signal);}
+
+  /* ── floating blobs ── */
+  .hero,.section,.footer{position:relative;z-index:1;}
+  .blob{position:fixed;border-radius:50%;pointer-events:none;z-index:0;filter:blur(80px);opacity:0.08;}
+  .blob-1{width:500px;height:500px;background:var(--signal);top:-100px;right:-100px;animation:floatA 14s ease-in-out infinite;}
+  .blob-2{width:400px;height:400px;background:var(--copper);bottom:-80px;left:-80px;animation:floatB 18s ease-in-out infinite;}
+  .blob-3{width:300px;height:300px;background:var(--signal);top:50%;left:50%;transform:translate(-50%,-50%);animation:floatC 22s ease-in-out infinite;}
+  @keyframes floatA{0%,100%{transform:translate(0,0) scale(1);}50%{transform:translate(-40px,60px) scale(1.1);}}
+  @keyframes floatB{0%,100%{transform:translate(0,0) scale(1);}50%{transform:translate(50px,-50px) scale(1.08);}}
+  @keyframes floatC{0%,100%{transform:translate(-50%,-50%) scale(1);}50%{transform:translate(-50%,-50%) scale(1.15);}}
+
+  .is-active{border-color:var(--signal)!important;box-shadow:0 0 0 1px var(--signal),0 0 28px rgba(95,217,192,.28),inset 0 0 26px rgba(95,217,192,.06)!important;transform:translateY(-3px);}
+
+  a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{outline:2px solid var(--signal);outline-offset:2px;}
+
+  /* ── responsive ── */
+  @media(max-width:980px){
+    .nav-links{display:none;}
+    .hamburger{display:flex;}
+    .hero{flex-direction:column;padding-top:120px;}
+    .hero-right{width:100%;}
+    .hl-grid,.skills-grid{grid-template-columns:repeat(2,1fr);}
+    .about-grid,.contact-grid{grid-template-columns:1fr;}
+    .projects-grid{grid-template-columns:1fr;}
+    .certs-grid{grid-template-columns:repeat(2,1fr);}
+  }
+  @media(max-width:560px){
+    .section{padding:72px 0;}
+    .section-inner{padding:0 20px;}
+    .hl-grid,.skills-grid,.certs-grid{grid-template-columns:1fr;}
+    .hero-stats{flex-wrap:wrap;}
+    .stat{flex:1 1 45%;}
+    .cta-card{padding:40px 22px;}
+    .edu-item{grid-template-columns:1fr;}
+    .edu-item::before{display:none;}
+    .edu-year{text-align:left;}
+  }
+</style>
+</head>
+<body>
+
+<!-- floating background blobs -->
+<div class="blob blob-1"></div>
+<div class="blob blob-2"></div>
+<div class="blob blob-3"></div>
+
+<div id="prog"></div>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <div class="nav-logo">S<span class="b">A</span></div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#highlights">Highlights</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="nav-right">
+    <a href="https://github.com/sudipadhikari729-dotcom" class="nav-icon" target="_blank" rel="noopener" aria-label="GitHub">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+    </a>
+    <a href="https://www.linkedin.com/in/sudip-adhikari-749857374/" class="nav-icon" target="_blank" rel="noopener" aria-label="LinkedIn">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+    </a>
+    <a href="mailto:callmesudip729@gmail.com" class="btn btn-primary" style="padding:9px 18px;">Hire Me</a>
+  </div>
+  <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-left">
+    <div class="hero-eyebrow"><span class="dot-live"></span>Open to Internships &amp; EEE Roles</div>
+    <h1 class="hero-name">
+      <span>Sudip</span>
+      <span class="last">Adhikari</span>
+    </h1>
+    <div class="hero-role-line">
+      <span>EEE Engineer</span><span class="sep">·</span>
+      <span>Power Electronics</span><span class="sep">·</span>
+      <span>Motor Control &amp; VFD</span>
+    </div>
+    <div class="hero-typewriter-wrap">
+      <span class="tw-static">Designing</span>
+      <span class="tw-text" id="typewriter"></span><span class="tw-cursor"></span>
+    </div>
+    <p class="hero-bio">
+      Electrical and Electronics Engineering student at <strong>Nepal Engineering College</strong>, Pokhara University.
+      Hands-on with <strong>power electronics</strong>, electrical machines, and <strong>motor control</strong>.
+      Built and fabricated a complete <strong>VFD for three-phase induction motor speed control</strong>
+      — from inverter circuit design to MATLAB/Simulink modelling.
+    </p>
+    <div class="hero-actions">
+      <a href="#projects" class="btn btn-primary">
+        <span>See My Work</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+      <a href="https://github.com/sudipadhikari729-dotcom" class="btn btn-ghost" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor" style="width:15px;height:15px"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+        GitHub
+      </a>
+      <a href="https://www.linkedin.com/in/sudip-adhikari-749857374/" class="btn btn-ghost" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="currentColor" style="width:15px;height:15px"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        LinkedIn
+      </a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><span class="stat-num" data-target="4">0</span><span class="stat-label">Years Study</span></div>
+      <div class="stat"><span class="stat-num" data-target="1">0</span><span class="stat-label">VFD Built</span></div>
+      <div class="stat"><span class="stat-num" data-target="4">0</span><span class="stat-label">Languages</span></div>
+      <div class="stat"><span class="stat-num" data-target="1">0</span><span class="stat-label">Internship</span></div>
+    </div>
+  </div>
+
+  <div class="hero-right">
+    <div class="scope-panel scope-corners">
+      <div class="scope-corner-b1"></div><div class="scope-corner-b2"></div>
+      <div class="scope-head">
+        <span>vfd_pwm_waveform.sig</span>
+        <span class="dots"><span></span><span></span><span></span></span>
+      </div>
+      <div class="wave-wrap">
+        <canvas class="wave-canvas" id="waveCanvas" width="388" height="80"></canvas>
+            <div class="wave-caption"><span>f = 50 Hz · SPWM</span><strong id="dutyReadout">duty = 60%</strong></div>
+      </div>
+      <div class="code-window">
+        <pre class="window-code" id="codeAnim"></pre>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HIGHLIGHTS -->
+<section class="section highlights" id="highlights">
+  <div class="section-inner">
+    <div class="designator">S01 — Highlights</div>
+    <h2 class="heading reveal">Things worth a <span class="accent">closer look</span></h2>
+    <div class="hl-grid">
+      <div class="hl-card reveal">
+        <div class="hl-icon-wrap"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M13 3 5 14h6l-1 7 8-11h-6l1-7Z"/></svg></div>
+        <p>Designed and hardware-fabricated a complete VFD for three-phase induction motor speed control.</p>
+      </div>
+      <div class="hl-card reveal d1">
+        <div class="hl-icon-wrap"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 13.5a7.6 7.6 0 0 0 0-3l2-1.5-2-3.4-2.4 1a7.7 7.7 0 0 0-2.6-1.5L14 2.5h-4l-.4 2.6a7.7 7.7 0 0 0-2.6 1.5l-2.4-1-2 3.4 2 1.5a7.6 7.6 0 0 0 0 3l-2 1.5 2 3.4 2.4-1a7.7 7.7 0 0 0 2.6 1.5l.4 2.6h4l.4-2.6a7.7 7.7 0 0 0 2.6-1.5l2.4 1 2-3.4-2-1.5Z"/></svg></div>
+        <p>Hands-on experience with transformers, induction motors, and power electronic circuits in the lab.</p>
+      </div>
+      <div class="hl-card reveal d2">
+        <div class="hl-icon-wrap"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9h6M9 12h6M9 15h4"/></svg></div>
+        <p>Proficient in MATLAB/Simulink for motor control simulation and inverter circuit modelling.</p>
+      </div>
+      <div class="hl-card reveal d3">
+        <div class="hl-icon-wrap"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8"/><path d="M21 7h-6v6"/></svg></div>
+        <p>Internship as HT/LT Distribution Line Engineer — designed, inspected, and maintained electrical distribution systems.</p>
+      </div>
+      <div class="hl-card reveal">
+        <div class="hl-icon-wrap"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2v-4M9 21H5a2 2 0 0 1-2-2v-4m0 0h18"/></svg></div>
+        <p>Knowledge of AutoCAD for electrical drawing and industrial layout design.</p>
+      </div>
+      <div class="hl-card reveal d1">
+        <div class="hl-icon-wrap"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 19c8 0 14-6 14-14-8 0-14 6-14 14Z"/><path d="M5 19c2-4 5-7 9-9"/></svg></div>
+        <p>Monitored power quality, load distribution, and fault conditions during internship at Jay Gadhimai Construction.</p>
+      </div>
+      <div class="hl-card reveal d2">
+        <div class="hl-icon-wrap"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10 12 5 2 10l10 5 10-5Z"/><path d="M6 12v5c0 1 3 3 6 3s6-2 6-3v-5"/></svg></div>
+        <p>Final year EEE student at Nepal Engineering College, Pokhara University — 2021 batch.</p>
+      </div>
+      <div class="hl-card reveal d3">
+        <div class="hl-icon-wrap"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m8 9-3 3 3 3"/><path d="m16 9 3 3-3 3"/><path d="m13 6-2 12"/></svg></div>
+        <p>Quick learner and motivated to develop practical engineering solutions in power systems and industrial automation.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="section about" id="about">
+  <div class="section-inner">
+    <div class="designator">S02 — About</div>
+    <div class="about-grid">
+      <div class="about-text reveal">
+        <h2 class="heading" style="margin-bottom:24px;">Engineering that runs on<br/><span class="accent">real current</span></h2>
+        <p>
+          I'm <strong>Sudip Adhikari</strong>, an Electrical and Electronics Engineering student at
+          <strong>Nepal Engineering College</strong>, Pokhara University. My focus is on the practical side
+          of electrical engineering — machines, power systems, and the electronics that make them controllable.
+        </p>
+        <p>
+          My final year project — <strong>Design and Hardware Fabrication of a VFD for Speed Control of a
+          Three-Phase Induction Motor</strong> — pushed me deep into motor control theory, inverter circuit
+          design, PWM techniques, and MATLAB/Simulink modelling. I built it, not just simulated it.
+        </p>
+        <p>
+          I completed an internship as an <strong>HT/LT Distribution Line Engineer</strong> at Jay Gadhimai
+          Construction, where I worked hands-on with distribution lines, feeders, transformers, and power
+          quality monitoring on real industrial sites.
+        </p>
+        <p>
+          I'm a fast learner who'd rather wire something up and see if it works than stay in theory forever.
+          Currently looking for opportunities in power electronics, industrial automation, and electrical engineering.
+        </p>
+        <div class="about-tags">
+          <span class="tag">Power Electronics</span>
+          <span class="tag">Motor Control</span>
+          <span class="tag">VFD Design</span>
+          <span class="tag">MATLAB/Simulink</span>
+          <span class="tag">HT/LT Systems</span>
+          <span class="tag">Dhanusha, Nepal</span>
+        </div>
+      </div>
+      <div class="about-card reveal d1">
+        <div class="profile-block">
+          <div class="profile-ring">SA</div>
+          <div class="pname">Sudip Adhikari</div>
+          <div class="prole">EEE Engineer · Nepal Engineering College</div>
+        </div>
+        <div class="info-list">
+          <div class="info-row"><span class="info-key">Degree</span><span class="info-val">B.E. EEE, Nepal Engineering College</span></div>
+          <div class="info-row"><span class="info-key">University</span><span class="info-val">Pokhara University (2021 batch)</span></div>
+          <div class="info-row"><span class="info-key">GitHub</span><span class="info-val"><a href="https://github.com/sudipadhikari729-dotcom" target="_blank" rel="noopener">sudipadhikari729-dotcom</a></span></div>
+          <div class="info-row"><span class="info-key">LinkedIn</span><span class="info-val"><a href="https://www.linkedin.com/in/sudip-adhikari-749857374/" target="_blank" rel="noopener">sudip-adhikari</a></span></div>
+          <div class="info-row"><span class="info-key">Email</span><span class="info-val" style="font-size:0.76rem;">callmesudip729@gmail.com</span></div>
+          <div class="info-row"><span class="info-key">Phone</span><span class="info-val">9812173729</span></div>
+          <div class="info-row"><span class="info-key">Status</span><span class="info-val open">Open to Opportunities</span></div>
+          <div class="info-row"><span class="info-key">Location</span><span class="info-val">Dhanusha, Nepal</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section class="section skills" id="skills">
+  <div class="section-inner">
+    <div class="designator">S03 — Stack</div>
+    <h2 class="heading reveal">What I actually <span class="accent">work with</span></h2>
+    <div class="skills-grid">
+      <div class="skill-cat reveal">
+        <div class="skill-cat-head">
+          <div class="icon-wrap"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M13 3 5 14h6l-1 7 8-11h-6l1-7Z"/></svg></div>
+          <h3>Power Electronics</h3>
+        </div>
+        <div class="pill-list">
+          <span class="pill">VFD Design</span>
+          <span class="pill">Inverter Circuits</span>
+          <span class="pill">PWM Techniques</span>
+          <span class="pill">Rectifiers</span>
+          <span class="pill">Power Converters</span>
+          <span class="pill">Motor Control</span>
+        </div>
+      </div>
+      <div class="skill-cat reveal d1">
+        <div class="skill-cat-head">
+          <div class="icon-wrap"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 13.5a7.6 7.6 0 0 0 0-3l2-1.5-2-3.4-2.4 1a7.7 7.7 0 0 0-2.6-1.5L14 2.5h-4l-.4 2.6a7.7 7.7 0 0 0-2.6 1.5l-2.4-1-2 3.4 2 1.5a7.6 7.6 0 0 0 0 3l-2 1.5 2 3.4 2.4-1a7.7 7.7 0 0 0 2.6 1.5l.4 2.6h4l.4-2.6a7.7 7.7 0 0 0 2.6-1.5l2.4 1 2-3.4-2-1.5Z"/></svg></div>
+          <h3>Electrical Machines</h3>
+        </div>
+        <div class="pill-list">
+          <span class="pill">Induction Motors</span>
+          <span class="pill">Transformers</span>
+          <span class="pill">Speed Control</span>
+          <span class="pill">AC/DC Machines</span>
+          <span class="pill">Torque Analysis</span>
+        </div>
+      </div>
+      <div class="skill-cat reveal d2">
+        <div class="skill-cat-head">
+          <div class="icon-wrap"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9h6M9 12h6M9 15h4"/></svg></div>
+          <h3>Tools &amp; Software</h3>
+        </div>
+        <div class="pill-list">
+          <span class="pill">MATLAB</span>
+          <span class="pill">Simulink</span>
+          <span class="pill">AutoCAD</span>
+          <span class="pill">MS Office</span>
+          <span class="pill">Word / Excel</span>
+          <span class="pill">PowerPoint</span>
+        </div>
+      </div>
+      <div class="skill-cat reveal d3">
+        <div class="skill-cat-head">
+          <div class="icon-wrap"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3H5a2 2 0 0 0-2 2v4m6-6h10a2 2 0 0 1 2 2v4M9 3v18m0 0h10a2 2 0 0 0 2-2v-4M9 21H5a2 2 0 0 1-2-2v-4m0 0h18"/></svg></div>
+          <h3>Power Systems</h3>
+        </div>
+        <div class="pill-list">
+          <span class="pill">HT/LT Distribution</span>
+          <span class="pill">Power Quality</span>
+          <span class="pill">Load Analysis</span>
+          <span class="pill">Fault Conditions</span>
+          <span class="pill">Electrical Safety</span>
+          <span class="pill">Industrial Automation</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section class="section projects" id="projects">
+  <div class="section-inner">
+    <div class="designator">S04 — Projects</div>
+    <h2 class="heading reveal">Built, not just <span class="accent">simulated</span></h2>
+    <div class="projects-grid">
+
+      <div class="proj-card featured reveal">
+        <div class="proj-top">
+          <span class="proj-badge">Final Year Project</span>
+          <span class="proj-tp">hardware · fabricated</span>
+        </div>
+        <h3 class="proj-title">VFD for Speed Control of Three-Phase Induction Motor</h3>
+        <p class="proj-desc">Designed and hardware-fabricated a Variable Frequency Drive (VFD) for speed control of a three-phase induction motor. Covered motor control theory, inverter circuit design, PWM signal generation, rectifier stages, and full MATLAB/Simulink modelling and verification before physical build.</p>
+        <div class="proj-flow">
+          <span>AC Input</span><span class="arrow">→</span>
+          <span>Rectifier</span><span class="arrow">→</span>
+          <span>DC Bus</span><span class="arrow">→</span>
+          <span>IGBT Inverter</span><span class="arrow">→</span>
+          <span>3-Phase Motor</span>
+        </div>
+        <div class="proj-stack"><span>MATLAB</span><span>Simulink</span><span>Inverter Circuit</span><span>PWM</span><span>Motor Control</span></div>
+      </div>
+
+      <div class="proj-card reveal d1">
+        <div class="proj-top">
+          <span class="proj-badge">Lab Work</span>
+          <span class="proj-tp">hands-on</span>
+        </div>
+        <h3 class="proj-title">Transformers, Induction Motors &amp; Power Electronics</h3>
+        <p class="proj-desc">Lab-based coursework covering characterisation and testing of transformers, induction motors, and power electronic circuits. Performed open/short circuit tests, efficiency measurements, and speed-torque characteristic analysis.</p>
+        <div class="proj-flow">
+          <span>Setup</span><span class="arrow">→</span>
+          <span>Test</span><span class="arrow">→</span>
+          <span>Measure</span><span class="arrow">→</span>
+          <span>Analyse</span>
+        </div>
+        <div class="proj-stack"><span>Transformer Testing</span><span>Motor Analysis</span><span>Power Electronics</span></div>
+      </div>
+
+      <div class="proj-card reveal d2">
+        <div class="proj-top">
+          <span class="proj-badge">Internship</span>
+          <span class="proj-tp">Sep 2025 – Oct 2025</span>
+        </div>
+        <h3 class="proj-title">HT/LT Distribution Line Engineering</h3>
+        <p class="proj-desc">As an intern at Jay Gadhimai Construction, Kalaiya, Bara — designed, inspected, and maintained HT/LT distribution lines, feeders, transformers, and electrical equipment. Supervised installation and commissioning of distribution systems. Monitored power quality, load distribution, and fault conditions.</p>
+        <div class="proj-flow">
+          <span>Design</span><span class="arrow">→</span>
+          <span>Inspect</span><span class="arrow">→</span>
+          <span>Commission</span><span class="arrow">→</span>
+          <span>Monitor</span>
+        </div>
+        <div class="proj-stack"><span>HT/LT Lines</span><span>Distribution</span><span>Power Quality</span><span>Fault Analysis</span></div>
+      </div>
+
+      <div class="proj-card reveal d3">
+        <div class="proj-top">
+          <span class="proj-tp">simulation</span>
+        </div>
+        <h3 class="proj-title">Inverter Circuit &amp; PWM Modelling in MATLAB/Simulink</h3>
+        <p class="proj-desc">Modelled and simulated three-phase inverter circuits and sinusoidal PWM techniques in MATLAB/Simulink as part of the VFD project. Verified output waveforms, harmonic analysis, and motor speed response before hardware implementation.</p>
+        <div class="proj-flow">
+          <span>Model</span><span class="arrow">→</span>
+          <span>Simulate</span><span class="arrow">→</span>
+          <span>Verify</span><span class="arrow">→</span>
+          <span>Implement</span>
+        </div>
+        <div class="proj-stack"><span>MATLAB</span><span>Simulink</span><span>PWM</span><span>Harmonic Analysis</span></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section class="section" id="experience">
+  <div class="section-inner">
+    <div class="designator">S05 — Experience</div>
+    <h2 class="heading reveal">Work <span class="accent">Experience</span></h2>
+    <div class="exp-card reveal">
+      <div class="exp-head">
+        <div>
+          <div class="exp-title">HT/LT Distribution Line Engineer (Intern)</div>
+          <div class="exp-org">Jay Gadhimai Construction — Kalaiya07, Bara, Nepal</div>
+        </div>
+        <span class="exp-date">Sep 2025 – Oct 2025</span>
+      </div>
+      <ul class="exp-bullets">
+        <li>Designed, inspected, and maintained HT/LT distribution lines, feeders, transformers, and electrical equipment.</li>
+        <li>Supervised the installation and commissioning of distribution systems on active industrial sites.</li>
+        <li>Monitored power quality, load distribution, and fault conditions to ensure system reliability.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section class="section" id="education">
+  <div class="section-inner">
+    <div class="designator">S06 — Education</div>
+    <h2 class="heading reveal">Academic <span class="accent">Background</span></h2>
+    <div class="edu-list">
+      <div class="edu-item reveal">
+        <div class="edu-year">2021 – Present</div>
+        <div>
+          <div class="edu-title">Bachelor in Electrical and Electronics Engineering (EEE)</div>
+          <div class="edu-inst">Nepal Engineering College · Pokhara University</div>
+          <div class="edu-detail">2021 batch · Final year</div>
+        </div>
+      </div>
+      <div class="edu-item reveal d1">
+        <div class="edu-year">2020</div>
+        <div>
+          <div class="edu-title">+2 (Higher Secondary)</div>
+          <div class="edu-inst">NEB</div>
+          <div class="edu-detail">Grade B+ · GPA 2.91</div>
+        </div>
+      </div>
+      <div class="edu-item reveal d2">
+        <div class="edu-year">2017</div>
+        <div>
+          <div class="edu-title">SEE / 10th Grade</div>
+          <div class="edu-inst">NEB</div>
+          <div class="edu-detail">Grade A · GPA 3.40</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CERTS / LANGUAGES -->
+<section class="section certs">
+  <div class="section-inner">
+    <div class="designator">S07 — Languages</div>
+    <h2 class="heading reveal">Languages &amp; <span class="accent">Proficiency</span></h2>
+    <div class="certs-grid">
+      <div class="cert-card reveal">
+        <div class="icon-wrap"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg></div>
+        <span class="label">Nepali — Native</span>
+      </div>
+      <div class="cert-card reveal d1">
+        <div class="icon-wrap"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="m8 9-3 3 3 3"/><path d="m16 9 3 3-3 3"/><path d="m13 6-2 12"/></svg></div>
+        <span class="label">English — Proficient</span>
+      </div>
+      <div class="cert-card reveal d2">
+        <div class="icon-wrap"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10 12 5 2 10l10 5 10-5Z"/><path d="M6 12v5c0 1 3 3 6 3s6-2 6-3v-5"/></svg></div>
+        <span class="label">Hindi — Proficient</span>
+      </div>
+      <div class="cert-card reveal d3">
+        <div class="icon-wrap"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+        <span class="label">Maithili — Native</span>
+      </div>
+      <div class="cert-card reveal">
+        <div class="icon-wrap"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9h6M9 12h6M9 15h4"/></svg></div>
+        <span class="label">MATLAB/Simulink — Intermediate</span>
+      </div>
+      <div class="cert-card reveal d1">
+        <div class="icon-wrap"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L4 17l3 3 5.3-5.3a4 4 0 0 0 5.4-5.4l-2.6 2.6-2-2 2.6-2.6Z"/></svg></div>
+        <span class="label">AutoCAD — Intermediate</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section">
+  <div class="section-inner">
+    <div class="cta-card reveal">
+      <div class="cta-label">Ready to collaborate?</div>
+      <h2 class="cta-heading">Let's build something<br/><span class="accent">that actually runs</span></h2>
+      <p class="cta-sub">Open for internships, graduate engineering roles, and power electronics projects — happy to talk about what you're working on.</p>
+      <div class="cta-actions">
+        <a href="mailto:callmesudip729@gmail.com" class="btn btn-primary">
+          <span>Get In Touch</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13M22 2L15 22 11 13 2 9l20-7z"/></svg>
+        </a>
+        <a href="https://github.com/sudipadhikari729-dotcom" class="btn btn-ghost" target="_blank" rel="noopener">View GitHub</a>
+        <a href="https://www.linkedin.com/in/sudip-adhikari-749857374/" class="btn btn-ghost" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="section contact" id="contact">
+  <div class="section-inner">
+    <div class="designator">S08 — Contact</div>
+    <h2 class="heading reveal">Start a <span class="accent">conversation</span></h2>
+    <div class="contact-grid">
+      <div class="contact-info reveal">
+        <p class="contact-sub">Have an engineering role, project, or internship in mind? I read every message myself — let's talk.</p>
+        <div class="contact-links">
+          <a href="mailto:callmesudip729@gmail.com" class="contact-item">
+            <span class="icon-wrap"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m4 7 8 6 8-6"/></svg></span>
+            <span>callmesudip729@gmail.com</span>
+          </a>
+          <a href="tel:+9779812173729" class="contact-item">
+            <span class="icon-wrap"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 4h3l2 5-2.5 1.5a11 11 0 0 0 5 5L14 13l5 2v3a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2Z"/></svg></span>
+            <span>+977-9812173729</span>
+          </a>
+          <a href="https://github.com/sudipadhikari729-dotcom" class="contact-item" target="_blank" rel="noopener">
+            <span class="icon-wrap"><svg class="icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg></span>
+            <span>github.com/sudipadhikari729-dotcom</span>
+          </a>
+          <a href="https://www.linkedin.com/in/sudip-adhikari-749857374/" class="contact-item" target="_blank" rel="noopener">
+            <span class="icon-wrap"><svg class="icon" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></span>
+            <span>linkedin.com/in/sudip-adhikari-749857374</span>
+          </a>
+          <div class="contact-item">
+            <span class="icon-wrap"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-7.2 7-12a7 7 0 1 0-14 0c0 4.8 7 12 7 12Z"/><circle cx="12" cy="9" r="2.3"/></svg></span>
+            <span>Janaknandini, Dhanusha, Nepal</span>
+          </div>
+        </div>
+      </div>
+      <form class="form-card reveal d1" id="contactForm">
+        <div class="form-group"><label>Name</label><input type="text" placeholder="Your name" required /></div>
+        <div class="form-group"><label>Email</label><input type="email" placeholder="your@email.com" required /></div>
+        <div class="form-group"><label>Message</label><textarea rows="4" placeholder="Tell me about your project or opportunity..." required></textarea></div>
+        <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;">
+          <span>Send Message</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13M22 2L15 22 11 13 2 9l20-7z"/></svg>
+        </button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="nav-logo">S<span class="b">A</span></div>
+    <p class="footer-copy">Designed &amp; built by Sudip Adhikari · Dhanusha, Nepal</p>
+    <div class="footer-links">
+      <a href="mailto:callmesudip729@gmail.com">Email</a>
+      <a href="https://github.com/sudipadhikari729-dotcom" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://www.linkedin.com/in/sudip-adhikari-749857374/" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  // ── progress bar ──
+  var prog = document.getElementById('prog');
+  function updateProgress(){
+    var scrollable = document.documentElement.scrollHeight - window.innerHeight;
+    var pct = scrollable > 0 ? (window.scrollY / scrollable) * 100 : 0;
+    prog.style.width = Math.min(100, Math.max(0, pct)) + '%';
+  }
+  window.addEventListener('scroll', updateProgress, {passive:true});
+  window.addEventListener('resize', updateProgress);
+  updateProgress();
+
+  // ── nav scroll ──
+  var nav = document.getElementById('nav');
+  window.addEventListener('scroll', function(){
+    nav.style.background = window.scrollY > 30
+      ? 'rgba(10,26,19,0.95)' : 'rgba(10,26,19,0.78)';
+  });
+
+  // ── hamburger ──
+  var burger = document.getElementById('hamburger');
+  var links = document.querySelector('.nav-links');
+  burger.addEventListener('click', function(){
+    var open = links.style.display === 'flex';
+    if(open){
+      links.style.display = 'none';
+      burger.setAttribute('aria-expanded','false');
+    } else {
+      links.style.cssText = 'display:flex;position:fixed;top:64px;left:0;right:0;flex-direction:column;background:rgba(10,26,19,0.97);padding:24px 32px;gap:20px;border-bottom:1px solid var(--line);z-index:99;';
+      burger.setAttribute('aria-expanded','true');
+    }
+  });
+  links.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click', function(){
+      if(window.innerWidth <= 980){ links.style.display = 'none'; }
+    });
+  });
+
+  // ── typewriter ──
+  var phrases = [
+    'VFD Systems',
+    'Inverter Circuits',
+    'Motor Control',
+    'Power Electronics',
+    'MATLAB Models',
+    'Distribution Lines',
+    'Industrial Automation',
+  ];
+  var pi = 0, ci = 0, del = false;
+  var tw = document.getElementById('typewriter');
+  function type(){
+    var cur = phrases[pi];
+    if(!del){
+      tw.textContent = cur.slice(0,++ci);
+      if(ci === cur.length){ del = true; setTimeout(type, 1800); return; }
+      setTimeout(type, 70);
+    } else {
+      tw.textContent = cur.slice(0,--ci);
+      if(ci === 0){ del = false; pi = (pi+1)%phrases.length; }
+      setTimeout(type, 40);
+    }
+  }
+  setTimeout(type, 800);
+
+  // ── reveal ──
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, {threshold:0.13});
+  document.querySelectorAll('.reveal').forEach(function(el){ io.observe(el); });
+
+  // ── clickable portfolio glow ──
+  var interactiveBoxes = document.querySelectorAll('.hl-card,.skill-cat,.proj-card,.cert-card,.exp-card,.about-card,.cta-card,.form-card');
+  interactiveBoxes.forEach(function(box){
+    box.setAttribute('tabindex','0');
+    box.addEventListener('click', function(){
+      interactiveBoxes.forEach(function(other){
+        if(other !== box){ other.classList.remove('is-active'); }
+      });
+      box.classList.toggle('is-active');
+    });
+    box.addEventListener('keydown', function(e){
+      if(e.key === 'Enter' || e.key === ' '){
+        e.preventDefault();
+        box.click();
+      }
+    });
+  });
+
+  // ── stat counters ──
+  var statEls = document.querySelectorAll('.stat-num');
+  var counted = false;
+  var sio = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting && !counted){
+        counted = true;
+        statEls.forEach(function(el){
+          var target = parseInt(el.getAttribute('data-target'),10);
+          var cur = 0;
+          var step = Math.max(1, Math.ceil(target/24));
+          var iv = setInterval(function(){
+            cur += step;
+            if(cur >= target){ cur = target; clearInterval(iv); }
+            el.textContent = cur;
+          }, 40);
+        });
+      }
+    });
+  }, {threshold:0.4});
+  if(statEls.length){ sio.observe(statEls[0]); }
+
+  // ── PWM waveform canvas animation ──
+  var wc = document.getElementById('waveCanvas');
+  if(wc){
+    var wctx = wc.getContext('2d');
+    var dutyReadout = document.getElementById('dutyReadout');
+    var phase = 0;
+    function resizeWave(){
+      var scale = window.devicePixelRatio || 1;
+      var bounds = wc.getBoundingClientRect();
+      wc.width = Math.max(1, Math.round(bounds.width * scale));
+      wc.height = Math.max(1, Math.round(bounds.height * scale));
+      wctx.setTransform(scale, 0, 0, scale, 0, 0);
+    }
+    window.addEventListener('resize', resizeWave);
+    resizeWave();
+    function drawWave(){
+      var W = wc.clientWidth, H = wc.clientHeight;
+      wctx.clearRect(0,0,W,H);
+      // grid lines
+      wctx.strokeStyle = 'rgba(236,234,224,0.06)';
+      wctx.lineWidth = 0.5;
+      for(var gx=0;gx<=W;gx+=W/8){
+        wctx.beginPath(); wctx.moveTo(gx,0); wctx.lineTo(gx,H); wctx.stroke();
+      }
+      for(var gy=0;gy<=H;gy+=H/4){
+        wctx.beginPath(); wctx.moveTo(0,gy); wctx.lineTo(W,gy); wctx.stroke();
+      }
+      // sine reference (dim)
+      wctx.beginPath();
+      wctx.strokeStyle = 'rgba(95,217,192,0.22)';
+      wctx.lineWidth = 1;
+      for(var sx=0;sx<W;sx++){
+        var sy = H/2 - Math.sin((sx/W)*Math.PI*4 + phase)*H*0.35;
+        sx===0 ? wctx.moveTo(sx,sy) : wctx.lineTo(sx,sy);
+      }
+      wctx.stroke();
+      // PWM signal
+      wctx.beginPath();
+      wctx.strokeStyle = '#5FD9C0';
+      wctx.lineWidth = 1.5;
+      var duty = 0.6 + Math.sin(phase*0.5)*0.15;
+      if(dutyReadout){ dutyReadout.textContent = 'duty = ' + Math.round(duty * 100) + '%'; }
+      var period = W/4;
+      var lastY = H*0.1;
+      wctx.moveTo(0, lastY);
+      for(var px=0;px<W;px++){
+        var pos = (px + phase*12) % period;
+        var ny = pos < period*duty ? H*0.1 : H*0.85;
+        if(ny !== lastY){
+          wctx.lineTo(px, lastY);
+          wctx.lineTo(px, ny);
+          lastY = ny;
+        }
+      }
+      wctx.lineTo(W, lastY);
+      wctx.stroke();
+      phase += 0.03;
+      requestAnimationFrame(drawWave);
+    }
+    drawWave();
+  }
+
+  // ── code window typing ──
+  var codeText =
+'<span class="tok-com">% MATLAB: 3-phase VFD control</span>\n' +
+'<span class="tok-kw">f_out</span> = 40; <span class="tok-com">% Hz</span>\n' +
+'<span class="tok-kw">V_dc</span>  = 540;\n' +
+'<span class="tok-kw">m</span>     = 0.85; <span class="tok-com">% modulation</span>\n\n' +
+'<span class="tok-com">% SPWM generation</span>\n' +
+'<span class="tok-kw">t</span> = 0:1e-5:0.1;\n' +
+'ref = <span class="tok-str">m</span>*sin(2*pi*<span class="tok-kw">f_out</span>*t);\n' +
+'pwm = ref > carrier(t);\n\n' +
+'<span class="tok-com">% Motor speed (rpm)</span>\n' +
+'N = (120*<span class="tok-kw">f_out</span>) / poles;';
+  var codeEl = document.getElementById('codeAnim');
+  var i = 0, raw = codeText, plain = raw.replace(/<[^>]*>/g,'');
+  function typeStep(){
+    i++;
+    var shown='', count=0, idx=0;
+    while(idx<raw.length && count<i){
+      if(raw[idx]==='<'){ var cl=raw.indexOf('>',idx); shown+=raw.slice(idx,cl+1); idx=cl+1; }
+      else { shown+=raw[idx]; idx++; count++; }
+    }
+    codeEl.innerHTML = shown + '<span class="cursor-blink"></span>';
+    if(count<plain.length){ setTimeout(typeStep, 16); }
+  }
+  setTimeout(typeStep, 600);
+
+  // ── contact form ──
+  var form = document.getElementById('contactForm');
+  if(form){
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      var btn = form.querySelector('button span');
+      var orig = btn.textContent;
+      btn.textContent = 'Sending...';
+      setTimeout(function(){
+        btn.textContent = 'Sent! I\'ll reply soon';
+        form.reset();
+        setTimeout(function(){ btn.textContent = orig; }, 3000);
+      }, 1000);
+    });
+  }
+
+  // ── smooth scroll ──
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){
+    a.addEventListener('click', function(e){
+      var t = document.querySelector(a.getAttribute('href'));
+      if(t){ e.preventDefault(); t.scrollIntoView({behavior:'smooth'}); }
+    });
+  });
+
+})();
+</script>
+</body>
+</html>
